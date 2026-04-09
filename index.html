@@ -115,7 +115,7 @@ nav {
 }
 .hero-bg { position: absolute; inset: 0; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-.hero-overlay {
+.hero-overlay-disabled {
   position: absolute; inset: 0;
   background: rgba(10,37,64,0.48);
 }
@@ -168,6 +168,15 @@ nav {
   text-decoration: none; transition: all .2s;
 }
 .btn-outline:hover { background: rgba(255,255,255,0.1); }
+.btn-carta {
+  padding: 14px 32px; background: rgba(255,255,255,0.18);
+  border: 1.5px solid #fff; color: #fff; border-radius: 2px;
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-family: Georgia, serif; text-decoration: none; transition: all .25s;
+  backdrop-filter: blur(4px); font-weight: 700;
+}
+.btn-carta:hover { background: rgba(255,255,255,0.32); }
+
 
 /* ── LAYOUT ── */
 section { padding: 90px 0; }
@@ -476,29 +485,13 @@ footer {
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-body">
-    <span class="hero-eyebrow" data-t="hero_lugar">Santander · Cantabria</span>
     <h1 class="hero-name">
       <span class="agua">Agua</span>
       <span class="salada">Salada</span>
     </h1>
-    <p class="hero-tagline" data-t="hero_tagline">Alta cocina a precio asequible.<br>El mar en cada plato.</p>
-    <div class="hero-awards">
-      <div class="award-pill">
-        <div>
-          <div class="award-pill-title" data-t="award1_title">Guía Repsol 2026</div>
-          <div class="award-pill-sub" data-t="award1_sub">Restaurante recomendado</div>
-        </div>
-      </div>
-      <div class="award-pill">
-        <div>
-          <div class="award-pill-title" data-t="award2_title">Bib Gourmand Michelin 2026</div>
-          <div class="award-pill-sub" data-t="award2_sub">Buena cocina a buen precio</div>
-        </div>
-      </div>
-    </div>
     <div class="hero-ctas">
       <button class="btn-primary" onclick="abrirModal()" data-t="hero_reservar">Reservar Mesa</button>
-      <a href="#carta" class="btn-outline" data-t="hero_carta">Ver Carta</a>
+      <a href="#carta" class="btn-carta" data-t="hero_carta">Ver Carta</a>
     </div>
   </div>
 </section>
@@ -649,44 +642,36 @@ footer {
       <thead>
         <tr>
           <th data-t="col_dia">Día</th>
-          <th data-t="col_estado">Estado</th>
           <th data-t="col_horario">Horario</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Lunes</td>
-          <td><span class="badge-closed" data-t="closed">Cerrado</span></td>
           <td><span style="color:rgba(255,255,255,0.25)" data-t="descanso">Descanso semanal</span></td>
         </tr>
         <tr>
           <td>Martes</td>
-          <td><span class="badge-closed" data-t="closed">Cerrado</span></td>
           <td><span style="color:rgba(255,255,255,0.25)" data-t="descanso">Descanso semanal</span></td>
         </tr>
         <tr>
           <td>Miércoles</td>
-          <td><span class="badge-open" data-t="open">Abierto</span></td>
           <td class="hour-block"><span data-t="mediodia">Mediodía</span> 13:30 – 16:00 &nbsp;·&nbsp; <span data-t="noche">Noche</span> 20:30 – 23:00</td>
         </tr>
         <tr>
           <td>Jueves</td>
-          <td><span class="badge-open" data-t="open">Abierto</span></td>
           <td class="hour-block"><span data-t="mediodia">Mediodía</span> 13:30 – 16:00 &nbsp;·&nbsp; <span data-t="noche">Noche</span> 20:30 – 23:00</td>
         </tr>
         <tr>
           <td>Viernes</td>
-          <td><span class="badge-open" data-t="open">Abierto</span></td>
           <td class="hour-block"><span data-t="mediodia">Mediodía</span> 13:30 – 16:00 &nbsp;·&nbsp; <span data-t="noche">Noche</span> 20:30 – 23:00</td>
         </tr>
         <tr>
           <td>Sábado</td>
-          <td><span class="badge-open" data-t="open">Abierto</span></td>
           <td class="hour-block"><span data-t="mediodia">Mediodía</span> 13:30 – 16:00 &nbsp;·&nbsp; <span data-t="noche">Noche</span> 20:30 – 23:00</td>
         </tr>
         <tr>
           <td>Domingo</td>
-          <td><span class="badge-open" data-t="open">Abierto</span></td>
           <td class="hour-block"><span data-t="mediodia">Mediodía</span> 13:30 – 16:00 &nbsp;·&nbsp; <span data-t="noche">Noche</span> 20:30 – 22:30</td>
         </tr>
       </tbody>
@@ -712,7 +697,7 @@ footer {
           </li>
           <li>
             <div class="contact-icon">✉️</div>
-            <div><a href="mailto:aguasaladasantander@gmail.com" style="color:inherit;text-decoration:none">aguasaladasantander@gmail.com</a></div>
+            <div><a href="/cdn-cgi/l/email-protection#6c0d0b190d1f0d000d080d1f0d02180d0208091e2c0b010d0500420f0301" style="color:inherit;text-decoration:none"><span class="__cf_email__" data-cfemail="076660726674666b66636674666973666963627547606a666e6b2964686a">[email&#160;protected]</span></a></div>
           </li>
         </ul>
         <div class="social-row">
@@ -801,34 +786,33 @@ footer {
 </div>
 
 <script>
+
 var LANGS = {"ES": {"nav_nosotros": "Nosotros", "nav_platos": "Platos", "nav_carta": "Carta", "nav_horarios": "Horarios", "nav_contacto": "Contacto", "nav_reservar": "Reservar", "hero_lugar": "Santander · Cantabria", "hero_tagline": "Alta cocina a precio asequible.<br>El mar en cada plato.", "award1_title": "Guía Repsol 2026", "award1_sub": "Restaurante recomendado", "award2_title": "Bib Gourmand Michelin 2026", "award2_sub": "Buena cocina a buen precio", "hero_reservar": "Reservar Mesa", "hero_carta": "Ver Carta", "sec_historia": "Nuestra historia", "h2_historia": "Cocina de producto, alma de mar", "p1": "Agua Salada nació del deseo de acercar la cocina de calidad a todos. Una propuesta gastronómica honesta, con producto local de Cantabria en el centro y técnica al servicio del sabor.", "p2": "Cada plato es el resultado de una búsqueda continua: mercados de temporada, productores de confianza, y el mar de Santander como fuente de inspiración permanente.", "firma1_name": "Carlos García", "firma1_role": "Jefe de Cocina", "firma2_name": "Pilar Montiel", "firma2_role": "Dirección de Sala", "ha1_title": "Guía Repsol 2026", "ha1_sub": "Restaurante recomendado por la prestigiosa guía gastronómica española", "ha2_title": "Bib Gourmand Michelin 2026", "ha2_sub": "Distinción Michelin por ofrecer buena cocina a precio razonable", "sec_platos": "Platos destacados", "h2_platos": "El sabor del Cantábrico", "platos_sub": "Elaboraciones que respetan el producto y sorprenden en cada bocado.", "btn_ig": "Ver más en Instagram", "sec_carta": "Nuestra carta", "h2_carta": "Lo que servimos", "tab1": "Entrantes", "tab2": "Del Mar", "tab3": "De la Tierra", "tab4": "Postres", "tab5": "Otros", "sec_horarios": "Cuándo encontrarnos", "h2_horarios": "Horario de apertura", "col_dia": "Día", "col_estado": "Estado", "col_horario": "Horario", "open": "Abierto", "closed": "Cerrado", "descanso": "Descanso semanal", "mediodia": "Mediodía", "noche": "Noche", "sec_contacto": "Encuéntranos", "h2_contacto": "Cómo llegar", "foot_copy": "© 2026 Agua Salada · Santander", "modal_title": "Reservar en Agua Salada", "lbl_fecha": "Fecha", "lbl_hora": "Hora", "lbl_personas": "Personas", "lbl_nombre": "Nombre", "lbl_tel": "Teléfono", "lbl_nota": "Nota (opcional)", "ph_personas": "Nº de personas", "ph_nombre": "Tu nombre", "ph_tel": "+34 600 000 000", "ph_nota": "Alergias, ocasión especial...", "ph_hora": "Selecciona...", "btn_submit": "Confirmar por WhatsApp", "form_note": "Te redirigiremos a WhatsApp para confirmar tu reserva.", "lang_title": "Selecciona idioma", "dish1": "Tartar de Atún con Ajoblanco y Helado de Mostaza Inglesa", "dish2": "Salmón Marinado con Wasabi y Naranja", "dish3": "Langostinos y Mejillones en Salsa con Sabor a Escabeche", "dish4": "Ravioli Caseros de Cigalas con Salsa de Cava y Huevas de Pez Volador"}, "EN": {"nav_nosotros": "About", "nav_platos": "Dishes", "nav_carta": "Menu", "nav_horarios": "Hours", "nav_contacto": "Contact", "nav_reservar": "Reserve", "hero_lugar": "Santander · Cantabria, Spain", "hero_tagline": "Fine dining at an accessible price.<br>The sea on every plate.", "award1_title": "Repsol Guide 2026", "award1_sub": "Recommended restaurant", "award2_title": "Michelin Bib Gourmand 2026", "award2_sub": "Great cooking at a fair price", "hero_reservar": "Reserve a Table", "hero_carta": "View Menu", "sec_historia": "Our story", "h2_historia": "Product cuisine, soul of the sea", "p1": "Agua Salada was born from the desire to bring quality cooking to everyone. An honest gastronomic proposal, with local Cantabrian produce at the centre and technique in service of flavour.", "p2": "Each dish is the result of a continuous search: seasonal markets, trusted producers, and the sea of Santander as a permanent source of inspiration.", "firma1_name": "Carlos García", "firma1_role": "Head Chef", "firma2_name": "Pilar Montiel", "firma2_role": "Front of House", "ha1_title": "Repsol Guide 2026", "ha1_sub": "Recommended by the prestigious Spanish gastronomic guide", "ha2_title": "Michelin Bib Gourmand 2026", "ha2_sub": "Michelin distinction for great cooking at a reasonable price", "sec_platos": "Featured dishes", "h2_platos": "The flavour of the Cantabrian Sea", "platos_sub": "Preparations that respect the produce and surprise with every bite.", "btn_ig": "More on Instagram", "sec_carta": "Our menu", "h2_carta": "What we serve", "tab1": "Starters", "tab2": "From the Sea", "tab3": "From the Land", "tab4": "Desserts", "tab5": "Other", "sec_horarios": "When to find us", "h2_horarios": "Opening hours", "col_dia": "Day", "col_estado": "Status", "col_horario": "Hours", "open": "Open", "closed": "Closed", "descanso": "Weekly rest", "mediodia": "Lunch", "noche": "Dinner", "sec_contacto": "Find us", "h2_contacto": "How to get here", "foot_copy": "© 2026 Agua Salada · Santander", "modal_title": "Reserve at Agua Salada", "lbl_fecha": "Date", "lbl_hora": "Time", "lbl_personas": "Guests", "lbl_nombre": "Name", "lbl_tel": "Phone", "lbl_nota": "Note (optional)", "ph_personas": "Number of guests", "ph_nombre": "Your name", "ph_tel": "+34 600 000 000", "ph_nota": "Allergies, special occasion...", "ph_hora": "Select...", "btn_submit": "Confirm via WhatsApp", "form_note": "We will redirect you to WhatsApp to confirm your reservation.", "lang_title": "Select language", "dish1": "Tuna Tartare with Ajoblanco and English Mustard Ice Cream", "dish2": "Marinated Salmon with Wasabi and Orange", "dish3": "Prawns and Mussels in Escabeche Sauce", "dish4": "Homemade Prawn Ravioli with Cava Sauce and Flying Fish Roe"}, "FR": {"nav_nosotros": "À propos", "nav_platos": "Plats", "nav_carta": "Carte", "nav_horarios": "Horaires", "nav_contacto": "Contact", "nav_reservar": "Réserver", "hero_lieu": "Santander · Cantabrie, Espagne", "hero_tagline": "Haute cuisine à prix accessible.<br>La mer dans chaque assiette.", "award1_title": "Guide Repsol 2026", "award1_sub": "Restaurant recommandé", "award2_title": "Bib Gourmand Michelin 2026", "award2_sub": "Bonne cuisine à bon prix", "hero_reservar": "Réserver une table", "hero_carta": "Voir la carte", "sec_historia": "Notre histoire", "h2_historia": "Cuisine de produit, âme de la mer", "p1": "Agua Salada est né du désir de rapprocher la cuisine de qualité de tous. Une proposition gastronomique honnête, avec le produit local de Cantabrie au centre.", "p2": "Chaque plat est le résultat d'une recherche continue : marchés de saison, producteurs de confiance, et la mer de Santander comme source d'inspiration permanente.", "firma1_name": "Carlos García", "firma1_role": "Chef de cuisine", "firma2_name": "Pilar Montiel", "firma2_role": "Direction de salle", "ha1_title": "Guide Repsol 2026", "ha1_sub": "Recommandé par le prestigieux guide gastronomique espagnol", "ha2_title": "Bib Gourmand Michelin 2026", "ha2_sub": "Distinction Michelin pour une bonne cuisine à prix raisonnable", "sec_platos": "Plats vedettes", "h2_platos": "La saveur de la mer Cantabrique", "platos_sub": "Des préparations qui respectent le produit et surprennent à chaque bouchée.", "btn_ig": "Plus sur Instagram", "sec_carta": "Notre carte", "h2_carta": "Ce que nous servons", "tab1": "Entrées", "tab2": "De la mer", "tab3": "De la terre", "tab4": "Desserts", "tab5": "Autres", "sec_horarios": "Quand nous trouver", "h2_horarios": "Horaires d'ouverture", "col_dia": "Jour", "col_estado": "Statut", "col_horario": "Horaires", "open": "Ouvert", "closed": "Fermé", "descanso": "Repos hebdomadaire", "mediodia": "Déjeuner", "noche": "Dîner", "sec_contacto": "Nous trouver", "h2_contacto": "Comment venir", "foot_copy": "© 2026 Agua Salada · Santander", "modal_title": "Réserver chez Agua Salada", "lbl_fecha": "Date", "lbl_hora": "Heure", "lbl_personas": "Couverts", "lbl_nombre": "Nom", "lbl_tel": "Téléphone", "lbl_nota": "Note (optionnelle)", "ph_personas": "Nombre de couverts", "ph_nombre": "Votre nom", "ph_tel": "+34 600 000 000", "ph_nota": "Allergies, occasion spéciale...", "ph_hora": "Sélectionner...", "btn_submit": "Confirmer via WhatsApp", "form_note": "Nous vous redirigerons vers WhatsApp pour confirmer votre réservation.", "lang_title": "Sélectionner la langue", "dish1": "Tartare de thon, ajoblanco et glace à la moutarde anglaise", "dish2": "Saumon mariné au wasabi et orange", "dish3": "Crevettes et moules en sauce escabèche", "dish4": "Ravioli maison de langoustines, sauce au cava et œufs de poisson volant"}, "DE": {"nav_nosotros": "Über uns", "nav_platos": "Gerichte", "nav_carta": "Speisekarte", "nav_horarios": "Öffnungszeiten", "nav_contacto": "Kontakt", "nav_reservar": "Reservieren", "hero_lugar": "Santander · Kantabrien, Spanien", "hero_tagline": "Feine Küche zu erschwinglichen Preisen.<br>Das Meer auf jedem Teller.", "award1_title": "Repsol Guide 2026", "award1_sub": "Empfohlenes Restaurant", "award2_title": "Michelin Bib Gourmand 2026", "award2_sub": "Gute Küche zum fairen Preis", "hero_reservar": "Tisch reservieren", "hero_carta": "Speisekarte", "sec_historia": "Unsere Geschichte", "h2_historia": "Produktküche, Seele des Meeres", "p1": "Agua Salada entstand aus dem Wunsch, hochwertige Küche für alle zugänglich zu machen. Ein ehrlicher gastronomischer Vorschlag mit lokalem Produkt aus Kantabrien im Mittelpunkt.", "p2": "Jedes Gericht ist das Ergebnis einer kontinuierlichen Suche: Saisonmärkte, vertrauenswürdige Produzenten und das Meer von Santander als ständige Inspirationsquelle.", "firma1_name": "Carlos García", "firma1_role": "Küchenchef", "firma2_name": "Pilar Montiel", "firma2_role": "Saalleitung", "ha1_title": "Repsol Guide 2026", "ha1_sub": "Empfohlen vom renommierten spanischen Gastronomieführer", "ha2_title": "Michelin Bib Gourmand 2026", "ha2_sub": "Michelin-Auszeichnung für gute Küche zu vernünftigen Preisen", "sec_platos": "Empfohlene Gerichte", "h2_platos": "Der Geschmack des Kantabrischen Meeres", "platos_sub": "Zubereitungen, die das Produkt respektieren und bei jedem Bissen überraschen.", "btn_ig": "Mehr auf Instagram", "sec_carta": "Unsere Karte", "h2_carta": "Was wir servieren", "tab1": "Vorspeisen", "tab2": "Aus dem Meer", "tab3": "Aus dem Land", "tab4": "Desserts", "tab5": "Sonstiges", "sec_horarios": "Wann Sie uns finden", "h2_horarios": "Öffnungszeiten", "col_dia": "Tag", "col_estado": "Status", "col_horario": "Zeiten", "open": "Geöffnet", "closed": "Geschlossen", "descanso": "Wochenpause", "mediodia": "Mittagessen", "noche": "Abendessen", "sec_contacto": "Finden Sie uns", "h2_contacto": "So kommen Sie zu uns", "foot_copy": "© 2026 Agua Salada · Santander", "modal_title": "Reservierung bei Agua Salada", "lbl_fecha": "Datum", "lbl_hora": "Uhrzeit", "lbl_personas": "Personen", "lbl_nombre": "Name", "lbl_tel": "Telefon", "lbl_nota": "Anmerkung (optional)", "ph_personas": "Personenzahl", "ph_nombre": "Ihr Name", "ph_tel": "+34 600 000 000", "ph_nota": "Allergien, besonderer Anlass...", "ph_hora": "Auswählen...", "btn_submit": "Per WhatsApp bestätigen", "form_note": "Wir leiten Sie zu WhatsApp weiter, um Ihre Reservierung zu bestätigen.", "lang_title": "Sprache auswählen", "dish1": "Thunfisch-Tatar mit Ajoblanco und englischem Senf-Eis", "dish2": "Marinierter Lachs mit Wasabi und Orange", "dish3": "Garnelen und Muscheln in Escabeche-Sauce", "dish4": "Hausgemachte Langustinen-Ravioli mit Cava-Sauce und Fliegenfischrogen"}, "IT": {"nav_nosotros": "Chi siamo", "nav_platos": "Piatti", "nav_carta": "Menu", "nav_horarios": "Orari", "nav_contacto": "Contatti", "nav_reservar": "Prenotare", "hero_lugar": "Santander · Cantabria, Spagna", "hero_tagline": "Alta cucina a prezzo accessibile.<br>Il mare in ogni piatto.", "award1_title": "Guida Repsol 2026", "award1_sub": "Ristorante consigliato", "award2_title": "Bib Gourmand Michelin 2026", "award2_sub": "Buona cucina a buon prezzo", "hero_reservar": "Prenotare un tavolo", "hero_carta": "Vedere il menu", "sec_historia": "La nostra storia", "h2_historia": "Cucina di prodotto, anima di mare", "p1": "Agua Salada è nato dal desiderio di avvicinare la cucina di qualità a tutti. Una proposta gastronomica onesta, con prodotti locali della Cantabria al centro.", "p2": "Ogni piatto è il risultato di una ricerca continua: mercati stagionali, produttori di fiducia e il mare di Santander come fonte di ispirazione permanente.", "firma1_name": "Carlos García", "firma1_role": "Chef", "firma2_name": "Pilar Montiel", "firma2_role": "Direzione di sala", "ha1_title": "Guida Repsol 2026", "ha1_sub": "Consigliato dalla prestigiosa guida gastronomica spagnola", "ha2_title": "Bib Gourmand Michelin 2026", "ha2_sub": "Distinzione Michelin per buona cucina a prezzo ragionevole", "sec_platos": "Piatti in evidenza", "h2_platos": "Il sapore del Mare Cantabrico", "platos_sub": "Preparazioni che rispettano il prodotto e sorprendono ad ogni boccone.", "btn_ig": "Di più su Instagram", "sec_carta": "Il nostro menu", "h2_carta": "Cosa serviamo", "tab1": "Antipasti", "tab2": "Dal mare", "tab3": "Dalla terra", "tab4": "Dessert", "tab5": "Altro", "sec_horarios": "Quando trovarci", "h2_horarios": "Orari di apertura", "col_dia": "Giorno", "col_estado": "Stato", "col_horario": "Orari", "open": "Aperto", "closed": "Chiuso", "descanso": "Riposo settimanale", "mediodia": "Pranzo", "noche": "Cena", "sec_contacto": "Trovaci", "h2_contacto": "Come arrivare", "foot_copy": "© 2026 Agua Salada · Santander", "modal_title": "Prenotare ad Agua Salada", "lbl_fecha": "Data", "lbl_hora": "Ora", "lbl_personas": "Coperti", "lbl_nombre": "Nome", "lbl_tel": "Telefono", "lbl_nota": "Nota (opzionale)", "ph_personas": "Numero di coperti", "ph_nombre": "Il tuo nome", "ph_tel": "+34 600 000 000", "ph_nota": "Allergie, occasione speciale...", "ph_hora": "Seleziona...", "btn_submit": "Conferma via WhatsApp", "form_note": "Ti reindirizzeremo su WhatsApp per confermare la prenotazione.", "lang_title": "Seleziona la lingua", "dish1": "Tartare di tonno con ajoblanco e gelato alla senape inglese", "dish2": "Salmone marinato con wasabi e arancia", "dish3": "Gamberi e cozze in salsa all'escabeche", "dish4": "Ravioli caserecci di cicale di mare, salsa al cava e uova di pesce volante"}, "PT": {"nav_nosotros": "Sobre nós", "nav_platos": "Pratos", "nav_carta": "Carta", "nav_horarios": "Horários", "nav_contacto": "Contacto", "nav_reservar": "Reservar", "hero_lugar": "Santander · Cantábria, Espanha", "hero_tagline": "Alta cozinha a preço acessível.<br>O mar em cada prato.", "award1_title": "Guia Repsol 2026", "award1_sub": "Restaurante recomendado", "award2_title": "Bib Gourmand Michelin 2026", "award2_sub": "Boa cozinha a bom preço", "hero_reservar": "Reservar mesa", "hero_carta": "Ver carta", "sec_historia": "A nossa história", "h2_historia": "Cozinha de produto, alma do mar", "p1": "Agua Salada nasceu do desejo de aproximar a cozinha de qualidade de todos. Uma proposta gastronómica honesta, com produto local da Cantábria no centro.", "p2": "Cada prato é o resultado de uma busca contínua: mercados sazonais, produtores de confiança e o mar de Santander como fonte de inspiração permanente.", "firma1_name": "Carlos García", "firma1_role": "Chefe de cozinha", "firma2_name": "Pilar Montiel", "firma2_role": "Direcção de sala", "ha1_title": "Guia Repsol 2026", "ha1_sub": "Recomendado pelo prestigioso guia gastronómico espanhol", "ha2_title": "Bib Gourmand Michelin 2026", "ha2_sub": "Distinção Michelin por boa cozinha a preço razoável", "sec_platos": "Pratos em destaque", "h2_platos": "O sabor do Mar Cantábrico", "platos_sub": "Preparações que respeitam o produto e surpreendem em cada garfada.", "btn_ig": "Mais no Instagram", "sec_carta": "A nossa carta", "h2_carta": "O que servimos", "tab1": "Entradas", "tab2": "Do mar", "tab3": "Da terra", "tab4": "Sobremesas", "tab5": "Outros", "sec_horarios": "Quando nos encontrar", "h2_horarios": "Horário de abertura", "col_dia": "Dia", "col_estado": "Estado", "col_horario": "Horário", "open": "Aberto", "closed": "Fechado", "descanso": "Descanso semanal", "mediodia": "Almoço", "noche": "Jantar", "sec_contacto": "Encontre-nos", "h2_contacto": "Como chegar", "foot_copy": "© 2026 Agua Salada · Santander", "modal_title": "Reservar no Agua Salada", "lbl_fecha": "Data", "lbl_hora": "Hora", "lbl_personas": "Pessoas", "lbl_nombre": "Nome", "lbl_tel": "Telefone", "lbl_nota": "Nota (opcional)", "ph_personas": "Nº de pessoas", "ph_nombre": "O seu nome", "ph_tel": "+34 600 000 000", "ph_nota": "Alergias, ocasião especial...", "ph_hora": "Selecionar...", "btn_submit": "Confirmar via WhatsApp", "form_note": "Iremos redirecioná-lo para o WhatsApp para confirmar a sua reserva.", "lang_title": "Selecionar idioma", "dish1": "Tártaro de atum com ajoblanco e gelado de mostarda inglesa", "dish2": "Salmão marinado com wasabi e laranja", "dish3": "Gambas e mexilhões em molho de escabeche", "dish4": "Ravioli caseiro de lagostim com molho de cava e ovas de peixe-voador"}};
 var currentLang = 'ES';
 
 function applyLang(lang) {
   var T = LANGS[lang];
   if (!T) return;
-  // Update all [data-t] elements
   document.querySelectorAll('[data-t]').forEach(function(el) {
     var key = el.getAttribute('data-t');
     if (!T[key]) return;
     var val = T[key];
-    // For elements that had innerHTML with <em> we handle specially
-    if (el.tagName === 'H2' && el.innerHTML.indexOf('<em>') > -1) {
-      // keep <em> wrapping the italic part — we skip auto-replace for these
+    if (el.tagName === 'H2') {
+      var words = val.split(' ');
+      var lastWord = words.pop();
+      el.innerHTML = (words.length ? words.join(' ') + ' ' : '') + '<em>' + lastWord + '</em>';
       return;
     }
-    if (el.tagName === 'P' && val.indexOf('<br>') > -1) {
+    if (val.indexOf('<br>') > -1) {
       el.innerHTML = val;
     } else {
       el.textContent = val;
     }
   });
-  // Placeholders
   document.querySelectorAll('[data-ph]').forEach(function(el) {
     var key = el.getAttribute('data-ph');
     if (T[key]) el.placeholder = T[key];
   });
-  // Lang button label
   document.getElementById('langLabel').textContent = lang;
 }
 
@@ -840,7 +824,6 @@ function setLang(lang, btn) {
   cerrarIdiomas();
 }
 
-// Language panel
 function abrirIdiomas() {
   document.getElementById('langPanel').classList.add('on');
   document.body.style.overflow = 'hidden';
@@ -853,11 +836,9 @@ function cerrarIdiomasFuera(e) {
   if (e.target === document.getElementById('langPanel')) cerrarIdiomas();
 }
 
-// Mobile menu
 function toggleMob() { document.getElementById('mobMenu').classList.toggle('on'); }
 function closeMob() { document.getElementById('mobMenu').classList.remove('on'); }
 
-// Tabs
 function showTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('on'); });
   document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('on'); });
@@ -865,7 +846,6 @@ function showTab(id, btn) {
   btn.classList.add('on');
 }
 
-// Modal
 function abrirModal() {
   document.getElementById('modal').classList.add('on');
   document.body.style.overflow = 'hidden';
@@ -879,7 +859,6 @@ function cerrarModalFuera(e) {
   if (e.target === document.getElementById('modal')) cerrarModal();
 }
 
-// Form submit
 document.getElementById('reservaForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var fecha = document.getElementById('rfecha').value;
@@ -896,14 +875,8 @@ document.getElementById('reservaForm').addEventListener('submit', function(e) {
     + '%0ANombre: ' + nombre + '%0ATel: ' + tel;
   if (nota) msg += '%0ANota: ' + nota;
   window.open('https://wa.me/34665960096?text=' + msg, '_blank');
-  cerrarModal();
 });
 
-// Nav border on scroll
-window.addEventListener('scroll', function() {
-  document.getElementById('nav').style.borderBottomColor =
-    window.scrollY > 50 ? 'rgba(66,165,245,0.35)' : 'rgba(66,165,245,0.2)';
-});
 </script>
 </body>
 </html>
